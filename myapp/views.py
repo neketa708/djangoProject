@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 logger = logging.getLogger(__name__)
 def index(request):
-    return HttpResponse("Добро пожаловать на мой первый Django-сайт!")
+    return HttpResponse("Добро пожаловать на мой первый Django-сайт")
 
 
 def about(request):
