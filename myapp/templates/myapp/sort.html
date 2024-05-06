@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Заказанные товары</h2>
+
+<h3>За последние 7 дней (неделю)</h3>
+<ul>
+  {% for order in client.orders %}
+    {% if order.date >= now|add_days(-7) %}
+      {% for product in order.products %}
+        {% if product not in ordered_products %}
+          <li>{{ product }}</li>
+          {% with ordered_products.append(product) as new_ordered_products %}
+          {% endwith %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+</ul>
+
+<h3>За последние 30 дней (месяц)</h3>
+<ul>
+  {% for order in client.orders %}
+    {% if order.date >= now|add_days(-30) %}
+      {% for product in order.products %}
+        {% if product not in ordered_products %}
+          <li>{{ product }}</li>
+          {% with ordered_products.append(product) as new_ordered_products %}
+          {% endwith %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+</ul>
+
+<h3>За последние 365 дней (год)</h3>
+<ul>
+  {% for order in client.orders %}
+    {% if order.date >= now|add_days(-365) %}
+      {% for product in order.products %}
+        {% if product not in ordered_products %}
+          <li>{{ product }}</li>
+          {% with ordered_products.append(product) as new_ordered_products %}
+          {% endwith %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+</ul>
+</body>
+</html>

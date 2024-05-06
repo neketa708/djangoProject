@@ -1,6 +1,10 @@
 from django.shortcuts import render
 import logging
 from django.http import HttpResponse
+from django.utils import timezone
+from datetime import timedelta
+from django.shortcuts import render
+from .models import Client, Product, Order
 
 logger = logging.getLogger(__name__)
 def index(request):
